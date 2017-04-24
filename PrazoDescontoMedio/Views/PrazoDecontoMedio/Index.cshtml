@@ -1,0 +1,428 @@
+﻿@model IEnumerable<PrazoDescontoMedio.Models.Casa>
+@{
+    ViewBag.Title = "Index";
+
+    //Atributos Cardiesel
+
+    decimal descMedioCar = 0;
+    decimal descMedGraCar = 0;
+    int prazoMedioCar = 0;
+
+    //Atributos Auto Sete
+
+    decimal descMedioAut = 0;
+    decimal descMedGraAut = 0;
+    int prazoMedioAut = 0;
+
+    //Atributos Calisto
+    decimal descMedioCal = 0;
+    decimal descMedGraCal = 0;
+    int prazoMedioCal = 0;
+
+    //Atributos Goias
+    decimal descMedioGo = 0;
+    decimal descMedGraGo = 0;
+    int prazoMedioGo = 0;
+
+    //Atributos Posto Imperial
+    decimal descMedioPi = 0;
+    decimal descMedGraPi = 0;
+    int prazoMedioPi = 0;
+
+    //Atributos Uberlandia
+    decimal descMedioUb = 0;
+    decimal descMedGraUb = 0;
+    int prazoMedioUb = 0;
+
+    //Atributos Rede Mineira
+    decimal descMedioRm = 0;
+    decimal descMedGraRm = 0;
+    int prazoMedioRm = 0;
+
+    //Atributos Valadares
+    decimal descMedioVl = 0;
+    decimal descMedGraVl = 0;
+    int prazoMedioVl = 0;
+
+    //Atributos Vadiesel
+    decimal descMedioVa = 0;
+    decimal descMedGraVa = 0;
+    int prazoMedioVa = 0;
+
+    foreach (var casa in Model)
+    {
+        if (casa.CodigoEmpresa == "930")
+        {
+            descMedioCar = Decimal.Parse(casa.DescontoMedio.ToString());
+            descMedGraCar = Decimal.Parse(descMedioCar.ToString().Replace(",", ""));
+            prazoMedioCar = casa.PrazoMedio;
+        }
+
+        if (casa.CodigoEmpresa == "1200")
+        {
+            descMedioAut = Decimal.Parse(casa.DescontoMedio.ToString());
+            descMedGraAut = Decimal.Parse(descMedioAut.ToString().Replace(",", ""));
+            prazoMedioAut = casa.PrazoMedio;
+        }
+
+        if (casa.CodigoEmpresa == "262")
+        {
+            descMedioCal = Decimal.Parse(casa.DescontoMedio.ToString());
+            descMedGraCal = Decimal.Parse(descMedioCal.ToString().Replace(",", ""));
+            prazoMedioCal = casa.PrazoMedio;
+        }
+
+        if (casa.CodigoEmpresa == "2630")
+        {
+            descMedioGo = Decimal.Parse(casa.DescontoMedio.ToString());
+            descMedGraGo = Decimal.Parse(descMedioGo.ToString().Replace(",", ""));
+            prazoMedioGo = casa.PrazoMedio;
+        }
+
+
+        if (casa.CodigoEmpresa == "2890")
+        {
+            descMedioPi = Decimal.Parse(casa.DescontoMedio.ToString());
+            descMedGraPi = Decimal.Parse(descMedioPi.ToString().Replace(",", ""));
+            prazoMedioPi = casa.PrazoMedio;
+        }
+
+        if (casa.CodigoEmpresa == "2620")
+        {
+            descMedioUb = Decimal.Parse(casa.DescontoMedio.ToString());
+            descMedGraUb = Decimal.Parse(descMedioUb.ToString().Replace(",", ""));
+            prazoMedioUb = casa.PrazoMedio;
+        }
+
+        if (casa.CodigoEmpresa == "3610")
+        {
+            descMedioRm = Decimal.Parse(casa.DescontoMedio.ToString());
+            descMedGraRm = Decimal.Parse(descMedioRm.ToString().Replace(",", ""));
+            prazoMedioRm = casa.PrazoMedio;
+        }
+
+        if (casa.CodigoEmpresa == "260")
+        {
+            descMedioVl = Decimal.Parse(casa.DescontoMedio.ToString());
+            descMedGraVl = Decimal.Parse(descMedioVl.ToString().Replace(",", ""));
+            prazoMedioVl = casa.PrazoMedio;
+
+        }
+
+        if (casa.CodigoEmpresa == "130")
+        {
+            descMedioVa = Decimal.Parse(casa.DescontoMedio.ToString());
+            descMedGraVa = Decimal.Parse(descMedioVa.ToString().Replace(",", ""));
+            prazoMedioVa = casa.PrazoMedio;
+        }
+    }
+}
+<br />
+<div class="container-fluid">
+
+    <!--
+        col-md-3 - Alinhamento das colunas em desktop tela cheia - 4 colunas por linhas
+        col-sm-6 - Alinhamento das colunas em Tablets - 2 Colunas por linha
+        col-xs-12 - Alinhamento das Colunas em Smartphones - 1 Coluna por linha
+    -->
+
+<div class="container">
+    <div class="row">
+        <!-- Nav tabs -->
+        <ul id="tbEtapas" class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#geral" aria-controls="VisaoGeral" role="tab" data-toggle="tab">Visão Geral</a></li>
+            <li role="presentation"><a href="#etapa2" aria-controls="profile" role="tab" data-toggle="tab">Casas</a></li>
+            <li role="presentation"><a href="#etapa3" aria-controls="messages" role="tab" data-toggle="tab">Limites</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="geral">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" role="tab" id="headingOne">
+                                            <h3 class="text-info">
+                                                <a role="button"  data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                    <span id="lblFiltros" onclick="changePopover('lblFiltros')" onmouseover="showPopover('lblFiltros')" onmouseout="hidePopover('lblFiltros')" data-container="body" data-toggle="popover" data-placement="right" data-content="Clique para acessar os filtros!">Filtros</span> 
+                                                </a>
+                                            </h3>
+                                        </div>
+                                        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                            <div class="panel-body">
+                                                @using (Html.BeginForm("Index", "PrazoDecontoMedio", FormMethod.Post))
+                                                {
+                                                    <form class="form-inline">
+                                                        <div class="form-group">
+                                                            <label for="exampleInputName2">Data Inicial</label>
+                                                            <input required type="date" class="form-control" id="dataI" name="dataI">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail2">Data Final</label>
+                                                            <input required type="date" class="form-control" id="dataF" name="dataF">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <button type="submit" class="btn btn-default">Atualizar</button>
+                                                        </div>
+                                                    </form>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="collapse" id="filtroData">
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Desconto e Prazo Médio - Periodo: @ViewData["DataInicial"] a @ViewData["DataFinal"]</h3>
+                                <p>Legenda: <span class="alert-danger">Desconto Médio - %</span> - <span class="alert-info">Prazo Médio - Dias</span></p>
+                            </div>
+                            <div class="panel-body">
+                                <div class="box-chart">
+                                    <canvas id="GraficoBarra" style="width:90%;"></canvas>
+                                    <script type="text/javascript">
+
+                        var options = {
+                            responsive: true,
+                            showScale: true,
+                            scaleShowLabels: true,
+                            scaleFontSize: 15,
+                            legend: {
+                                display: true,
+                                labels: { fontColor: 'rgb(255, 99, 132)' }
+                            }
+                        };
+
+                var data = {
+                    labels: ["Cardiesel", "Auto Sete", "Calisto", "Goias", "Posto Imperial", "Uberlandia", "Rede Mineira", "Valadares", "Vadiesel"],
+                    datasets: [
+                        {
+                            label: "Dados primários",
+                            fillColor: "rgba(144,42,44,0.5)",
+                            strokeColor: "rgba(144,42,44,0.8)",
+                            highlightFill: "rgba(144,42,44,0.75)",
+                            highlightStroke: "rgba(144,42,44,1)",
+                            data: [@descMedGraCar / 100, @descMedGraAut / 100, @descMedGraCal / 100, @descMedGraGo / 100, @descMedGraPi / 100, @descMedGraUb / 100, @descMedGraRm / 100, @descMedGraVl / 100, @descMedGraVa / 100]
+                        },
+                        {
+                            label: "Dados secundários",
+                            fillColor: "rgba(151,187,205,0.5)",
+                            strokeColor: "rgba(151,187,205,0.8)",
+                            highlightFill: "rgba(151,187,205,0.75)",
+                            highlightStroke: "rgba(151,187,205,1)",
+                            data: [@prazoMedioCar, @prazoMedioAut, @prazoMedioCal, @prazoMedioGo, @prazoMedioPi, @prazoMedioUb, @prazoMedioRm, @prazoMedioVl, @prazoMedioVa]
+                        }
+                    ]
+                };
+
+                window.onload = function(){
+                    var ctx = document.getElementById("GraficoBarra").getContext("2d");
+                    var BarChart = new Chart(ctx).Bar(data, options);
+                }
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="etapa2">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="text-info">Cardiesel</h3>
+                                <br />
+                                <p>
+                                    <span><label>Desconto Médio: @descMedioCar %</label></span>
+                                </p>
+                                <p>
+                                    <span><label>Prazo Médio: @prazoMedioCar Dias</label></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="text-info">AutoSete</h3>
+                                <br />
+                                <p>
+                                    <span><label>Desconto Médio: @descMedioAut %</label></span>
+                                </p>
+                                <p>
+                                    <span><label>Prazo Médio: @prazoMedioAut Dias</label></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="text-info">Calisto</h3>
+                                <br />
+                                <p>
+                                    <span><label>Desconto Médio: @descMedioCal %</label></span>
+                                </p>
+                                <p>
+                                    <span><label>Prazo Médio: @prazoMedioCal Dias</label></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="text-info">Goias</h3>
+                                <br />
+                                <p>
+                                    <span><label>Desconto Médio: @descMedioGo %</label></span>
+                                </p>
+                                <p>
+                                    <span><label>Prazo Médio: @prazoMedioGo Dias</label></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="text-info">Posto Imperial</h3>
+                                <br />
+                                <p>
+                                    <span><label>Desconto Médio: @descMedioPi %</label></span>
+                                </p>
+                                <p>
+                                    <span><label>Prazo Médio: @prazoMedioPi Dias</label></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="text-info">Uberlandia</h3>
+                                <br />
+                                <p>
+                                    <span><label>Desconto Médio: @descMedioUb %</label></span>
+                                </p>
+                                <p>
+                                    <span><label>Prazo Médio: @prazoMedioUb Dias</label></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="text-info">Rede Mineira</h3>
+                                <br />
+                                <p>
+                                    <span><label>Desconto Médio: @descMedioRm %</label></span>
+                                </p>
+                                <p>
+                                    <span><label>Prazo Médio: @prazoMedioRm Dias</label></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="text-info">Valadares</h3>
+                                <br />
+                                <p>
+                                    <span><label>Desconto Médio: @descMedioVl %</label></span>
+                                </p>
+                                <p>
+                                    <span><label>Prazo Médio: @prazoMedioVl Dias</label></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="text-info">Vadiesel</h3>
+                                <br />
+                                <p>
+                                    <span><label>Desconto Médio: @descMedioVa %</label></span>
+                                </p>
+                                <p>
+                                    <span><label>Prazo Médio: @prazoMedioVa Dias</label></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="etapa3" ng-controller="descMCtrl">
+                <p>
+                    <b><i>Todas as Casas</i></b>
+                </p>
+                <span ng-click="obterCasas()" class="btn btn-default">Carregar Casas</span>
+                <table class="table table-hover">
+                    <tr>
+                        <td><b>Codigo Empresa</b></td>
+                        <td><b>Desconto Medio</b></td>
+                        <td><b>Prazo Medio</b></td>
+                    </tr>
+                    <tr ng-repeat="casa in casas">
+                        <td>
+                            {{casa.CodigoEmpresa}}
+                        </td>
+                        <td>
+                            {{casa.DescontoMedio}}
+                        </td>
+                        <td>
+                            {{casa.PrazoMedio}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+    <!--
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Goiás</h3>
+                </div>
+                <div class="panel-body">
+                    <div id="example-three" class="ct-chart ct-square">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Montes Claros</h3>
+                </div>
+                <div class="panel-body">
+                    <div id="example-four" class="ct-chart ct-square">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+     -->
+</div>

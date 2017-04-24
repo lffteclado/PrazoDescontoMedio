@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Consumo Ajax</title>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+</head>
+<body>
+    <header>
+        <img src="http://www.devmedia.com.br/Imagens/2013/logo_new.png" style="width: 260px;">
+    </header>
+    <section>
+        <h1>Consulta de Notas</h1>
+        <form id="formulario" style="margin-bottom: 25px;">
+            <label>Id da nota a ser buscado: </label> <br><br>
+            <input id="id_nota" type="text" name="id" value="" placeholder="vazio para exibir todas">
+            <button id="enviar">ENVIAR</button> <span id="loading"></span>
+        </form>
+
+        <hr>
+        <p id="retorno"></p>
+        <script>
+             function exibeNota(data) {
+                 if ($.isArray(data)) {
+                     $("#retorno").empty();
+                     $.each(data, function (index, value) {
+                         $("#retorno").prepend("Codigo Empresa: " + value.CodigoEmpresa + "<br>Desconto Medio: " + value.DescontoMedio + "<br>PrazoMedio: " + value.PrazoMedio + "<br><br>");
+                     });
+                 } else {
+                     $("#retorno").html("CodigoEmpresa: " + data.CodigoEmpresa + "<br>DescontoMedio: " + data.DescontoMedio + "<br>Prazo Medio: " + data.PrazoMedio + "<br><br>");
+                 }
+                 $("#loading").empty();
+             }
+
+             function exibeErroNota() {
+                 $("#retorno").html("Ops, algo de errado aconteceu.");
+                 $("#loading").empty();
+             }
+
+             function aguardaNota() {
+                 $("#loading").html("<img style='width: 15px; margin-left: 10px;' src='http://www.devmedia.com.br/cursos/img/loading.gif' alt='loading'>");
+             }
+
+             function cliqueBotao(event) {
+                 event.preventDefault();
+                 var id = $("#id_nota").val();
+
+                 jQuery.ajax({
+                     type: "GET",
+                     dataType: "json",
+                     url: "/PrazoDecontoMedio/Grafico" + id,
+                     success: exibeNota,
+                     beforeSend: aguardaNota,
+                     error: exibeErroNota
+                 });
+             }
+
+             $(document).ready(function () {
+                 $("#enviar").on('click', cliqueBotao);
+             });
+        </script>
+    </section>
+</body>
+</html>
